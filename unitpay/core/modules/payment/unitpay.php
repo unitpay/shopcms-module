@@ -13,6 +13,7 @@ class CUnitpay extends PaymentModule {
         $this->sort_order 	= 1;
 
         $this->Settings = array(
+            "CONF_PAYMENTMODULE_UNITPAY_DOMAIN",
             "CONF_PAYMENTMODULE_UNITPAY_PUBLIC_KEY",
             "CONF_PAYMENTMODULE_UNITPAY_SECRET_KEY",
             "CONF_PAYMENTMODULE_UNITPAY_PAYMENT_STATUS",
@@ -21,6 +22,14 @@ class CUnitpay extends PaymentModule {
     }
 
     function _initSettingFields(){
+
+        $this->SettingsFields['CONF_PAYMENTMODULE_UNITPAY_DOMAIN'] = array(
+            'settings_value' 		=> '',
+            'settings_title' 			=> UNITPAY_CFG_DOMAIN_TITLE,
+            'settings_description' 	=> UNITPAY_CFG_DOMAIN_DESCRIPTION,
+            'settings_html_function' 	=> 'setting_TEXT_BOX(0,',
+            'sort_order' 			=> 1,
+        );
 
         $this->SettingsFields['CONF_PAYMENTMODULE_UNITPAY_PUBLIC_KEY'] = array(
             'settings_value' 		=> '',
@@ -65,13 +74,14 @@ class CUnitpay extends PaymentModule {
             $currency = 'RUB';
         }
 
+        $domain = $this->_getSettingValue('CONF_PAYMENTMODULE_UNITPAY_DOMAIN');
         $public_key = $this->_getSettingValue('CONF_PAYMENTMODULE_UNITPAY_PUBLIC_KEY');
         $form = "";
 
         $form .= "<table width='100%'>\n".
             "	<tr>\n".
             "		<td align='center'>\n";
-        $form .= '<form name="unitpay" action="https://unitpay.ru/pay/' . $public_key . '" method="get">';
+        $form .= '<form name="unitpay" action="https://' . $domain . '/pay/' . $public_key . '" method="get">';
         $form .= '<input type="hidden" name="sum" value="' . $sum . '" />';
         $form .= '<input type="hidden" name="account" value="' . $account . '" />';
         $form .= '<input type="hidden" name="desc" value="' . $desc . '" />';
@@ -130,7 +140,7 @@ class CUnitpay extends PaymentModule {
 
     function check( $params )
     {
-        // Получаем ID заказа
+        // РџРѕР»СѓС‡Р°РµРј ID Р·Р°РєР°Р·Р°
         $order_id = (int)$params['account'];
         $order = ordGetOrder( $order_id );
         $sum = round(100*$order["order_amount"] * $order["currency_value"])/100;
