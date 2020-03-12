@@ -2,7 +2,12 @@
 define('UNITPAY_TTL',
     'Unitpay');
 define('UNITPAY_DSCR',
-    'Visit Unitpay website to learn more about <a href="https://www.unitpay.ru" target=_blank>Unitpay payment</a>');
+    'Visit Unitpay website to learn more about Unitpay payment');
+
+define('UNITPAY_CFG_DOMAIN_TITLE',
+    'DOMAIN');
+define('UNITPAY_CFG_DOMAIN_DESCRIPTION',
+    'Your working domain');
 
 define('UNITPAY_CFG_PUBLIC_KEY_TITLE',
     'PUBLIC KEY');
