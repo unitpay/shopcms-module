@@ -18,6 +18,16 @@ define('UNITPAY_CFG_SECRET_KEY_TITLE',
     'SECRET KEY');
 define('UNITPAY_CFG_SECRET_KEY_DESCRIPTION',
     'secret key from Unitpay');
+	
+define('UNITPAY_CFG_NDS_TITLE',
+    'NDS');
+define('UNITPAY_CFG_NDS_DESCRIPTION',
+    'VAT (vat0, vat10, vat20, none)');
+	
+define('UNITPAY_CFG_SHIP_NDS_TITLE',
+    'SHIP_NDS');
+define('UNITPAY_CFG_SHIP_NDS_DESCRIPTION',
+    'VAT (vat0, vat10, vat20, none)');
 
 define('UNITPAY_CFG_PAYMENT_STATUS_TITLE',
     'Order status after payment');
@@ -30,7 +40,7 @@ define('UNITPAY_CFG_ERROR_STATUS_DESCRIPTION',
     'Set order status after error payment');
 
 define('UNITPAY_DESCRIPTION_AFTER_PROCESSING_HTML_1',
-    'Payment by order â„–');
+    'Payment by order ¹');
 
 define('UNITPAY_TXT_AFTER_PROCESSING_HTML_1',
     'Pay now!');
